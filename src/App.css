@@ -1,0 +1,809 @@
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  transition: background 0.3s ease;
+  color: #fff;
+}
+
+.app.light {
+  color: #333;
+}
+
+.app-container {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.icon-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: inherit;
+  backdrop-filter: blur(5px);
+  transition: background 0.2s;
+}
+
+.icon-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Clock styles */
+.clock {
+  text-align: center;
+}
+
+.time {
+  font-size: 3rem;
+  font-weight: 300;
+}
+
+.date {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+/* Search bar improvements */
+.search-bar {
+  display: flex;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 5px;
+  backdrop-filter: blur(5px);
+  width: 600px;
+  max-width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+/* Light theme search bar */
+.app.light .search-bar {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme search bar */
+.app.dark .search-bar {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Search engine dropdown styling */
+.search-engine {
+  appearance: none; /* Remove default styling */
+  background: transparent;
+  border: none;
+  color: inherit; /* Inherits color from parent */
+  padding: 0 10px;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  transition: border-color 0.3s ease;
+}
+
+/* Light theme border for search engine */
+.app.light .search-engine {
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Style the dropdown arrow */
+.search-engine::-ms-expand {
+  display: none;
+}
+
+/* Style for dropdown options - light theme */
+.app.light .search-engine option {
+  color: #333;
+  background-color: #f5f5f5;
+  padding: 10px;
+}
+
+/* Style for dropdown options - dark theme */
+.app.dark .search-engine option,
+.search-engine option {
+  color: white;
+  background-color: #333;
+  padding: 10px;
+}
+
+/* Add a custom dropdown arrow using pseudo-element */
+.search-engine-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-engine-container::after {
+  content: "arrow_drop_down";
+  font-family: 'Material Icons';
+  position: absolute;
+  right: 5px;
+  pointer-events: none;
+}
+
+/* Fix for Firefox which renders option backgrounds differently */
+@-moz-document url-prefix() {
+  .search-engine {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+  
+  .app.light .search-engine {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .app.light .search-engine option {
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  
+  .app.dark .search-engine option,
+  .search-engine option {
+    background-color: #333;
+    color: white;
+  }
+}
+
+/* Input field styling */
+.search-bar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 10px;
+  color: inherit;
+  outline: none;
+  font-size: 16px;
+}
+
+/* Search button styling */
+.search-bar button {
+  background: transparent;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.search-bar button:hover {
+  opacity: 1;
+}
+
+/* Tabs container styles */
+.tabs-container {
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.tab {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px 15px;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.2s;
+  backdrop-filter: blur(5px);
+}
+
+.tab.active {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.tab-close {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+}
+
+.tab-close:hover {
+  opacity: 1;
+}
+
+.add-tab-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 8px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: inherit;
+}
+
+.add-tab-form {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px;
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+}
+
+.add-tab-form input {
+  background: transparent;
+  border: none;
+  padding: 5px;
+  color: inherit;
+  outline: none;
+}
+
+.add-tab-form button {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  padding: 5px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* Link grid styles */
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.link-card {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s, background 0.2s;
+  position: relative;
+  backdrop-filter: blur(5px);
+}
+
+.link-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.link-actions {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.link-card:hover .link-actions {
+  opacity: 1;
+}
+
+.link-delete {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.link-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+}
+
+.default-icon {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.link-name {
+  font-weight: 500;
+  margin-top: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.add-link-form,
+.settings-form {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+  width: 500px;
+  max-width: 90%;
+  max-height: 80vh; /* Limit height to 80% of viewport height */
+  color: #333;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  overflow-y: auto; /* Enable vertical scrolling */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #ccc transparent; /* For Firefox */
+}
+
+/* Styling for WebKit scrollbars (Chrome, Safari, Edge) */
+.settings-form::-webkit-scrollbar {
+  width: 8px;
+}
+
+.settings-form::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.settings-form::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+/* Make sure the modal container allows for scrolling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px; /* Add padding to prevent form from touching edges */
+  overflow-y: auto; /* Enable scrolling if needed */
+}
+
+.light .add-link-form,
+.light .settings-form {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+}
+
+.add-link-form h2,
+.settings-form h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: inherit;
+}
+
+.light .form-group input,
+.light .form-group select {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.form-group.checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.form-group.checkbox input {
+  width: auto;
+  margin-right: 10px;
+}
+
+.icon-preview,
+.image-preview {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.icon-preview img,
+.image-preview img {
+  max-width: 100%;
+  max-height: 100px;
+  border-radius: 5px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background: #3498db;
+  color: white;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: inherit;
+}
+
+/* Theme-specific adjustments */
+.app.dark {
+  background: #121212;
+  color: #fff;
+}
+
+.app.light {
+  background: #f5f5f5;
+  color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .search-bar {
+    width: 100%;
+  }
+  
+  .link-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+/* Add these styles to App.css */
+
+.background-image-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.gallery-image {
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.gallery-image.selected {
+  border-color: #3498db;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-preview {
+  margin-top: 10px;
+  text-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.image-preview img {
+  max-width: 100%;
+  max-height: 120px;
+  border-radius: 5px;
+}
+/* Add this to your existing App.css file */
+
+/* Ensure the dashboard layout maintains its grid */
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+/* This ensures the form doesn't affect the layout */
+.todo-form-container {
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 1024px) {
+  .dashboard-layout {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* Todo List Styles */
+.todo-list-container {
+  width: 70%; /* Reduces width to 70% of original size */
+  margin: 0 auto; /* Centers the component horizontally */
+  max-width: 400px; /* Sets a maximum width for larger screens */
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.todo-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.add-todo-button {
+  background-color: var(--primary-color, #3498db);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-todo-button:hover {
+  background-color: var(--primary-dark, #2980b9);
+}
+
+.todo-form {
+  margin-bottom: 20px;
+}
+
+.todo-form input {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.todo-form-actions {
+  display: flex;
+  gap: 8px;
+  white-space: nowrap;
+}
+/* Inline form styling */
+.todo-form.inline-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.todo-form.inline-form input {
+  flex: 1;
+  margin-bottom: 0;
+}
+.todo-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.2s;
+}
+
+.todo-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.todo-item-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.todo-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.delete-todo {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.delete-todo:hover {
+  opacity: 1;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 20px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Dark mode adjustments */
+.app.dark .todo-list-container {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.app.dark .todo-form input {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border-color: #444;
+}
+
+.app.light .todo-list-container {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+/* Apps Drawer styles */
+.apps-drawer-container {
+  position: relative;
+}
+
+.apps-drawer {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: rgba(30, 30, 30, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 20px;
+  width: 300px;
+  z-index: 1000;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.app-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.app-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.app-item img {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 5px;
+}
+
+/* Light theme adjustment */
+.app.light .apps-drawer {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+}
+
+.app.light .app-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
